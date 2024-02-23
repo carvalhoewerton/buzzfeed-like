@@ -3,26 +3,26 @@
   <div class="logo">
     <img src="assets/images/logo.png" alt="" srcset="">
     <h3>
-      Título
+      {{title}}
     </h3>
 
   </div>
 
-  <div class="questions">
-    Questão selecionada
+  <div *ngIf="!finished"   class="questions">
+    {{questionSelected.question}}
 
   </div>
 
-  <div class="options">
+  <div *ngIf="!finished" class="options">
 
-    <button class="option">
-      option name
+    <button (click) ="press(o.alias)" *ngFor="let o of questionSelected.options" class="option"> <!-- usando a diretiva for pra fazer com que apareça as opções -->
+      {{o.name}}
     </button>
   </div>
 
-  <div class="results">
+  <div *ngIf=finished class="results">
       <h1>Seu resultado é: </h1>
-      <p>Resposta selecionada</p>
+      <p>{{answerSelected}}</p>
   </div>
 
 </div>
